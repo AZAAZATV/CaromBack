@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor //생성자 자동완성 안되잖앗ㅂ
 @Getter
 @Entity
-@Table(name = "usersave")
+@Table(name = "signup")
 public class Dbentity {
     @Id
     @Column(name ="ID",nullable = false, unique = true) //db 컬럼명 적을 것
