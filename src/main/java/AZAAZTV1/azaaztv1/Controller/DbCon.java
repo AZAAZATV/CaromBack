@@ -3,9 +3,13 @@ package AZAAZTV1.azaaztv1.Controller;
 import AZAAZTV1.azaaztv1.dto.Dto;
 import AZAAZTV1.azaaztv1.entitiy.Dbentity;
 import AZAAZTV1.azaaztv1.repository.DbRepository;
+import AZAAZTV1.azaaztv1.service.Dbservice;
+import AZAAZTV1.azaaztv1.service.impl.DbServiceImpl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,6 +31,12 @@ public class DbCon {
         }
     }
 
+/*    @Autowired
+    private Dbservice dbService;
+    @PostMapping("login")
+    public String loginMember(@ModelAttribute Dbentity dbentity, HttpSession session){
+         Dbentity loginUser = Sqlses
+    }*/
 
 /*    @PostMapping("/insert")
     public void signUp(@RequestBody Dto dto){
