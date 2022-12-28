@@ -14,10 +14,10 @@ public class SignUpRequest {
     private String classNum;
 
     public SignUpRequest(DbEntity dbentity) {
-    this.id = dbentity.getId();
-    this.password = dbentity.getPassword();
-    this.name = dbentity.getName();
-    this.classNum = dbentity.getClassNum();
+        this.id = dbentity.getId();
+        this.password = dbentity.getPassword();
+        this.name = dbentity.getName();
+        this.classNum = dbentity.getClassNum();
     }
 
     @Override

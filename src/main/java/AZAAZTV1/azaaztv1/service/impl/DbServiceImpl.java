@@ -1,9 +1,11 @@
 package AZAAZTV1.azaaztv1.service.impl;
 
+import AZAAZTV1.azaaztv1.dto.request.LoginRequest;
 import AZAAZTV1.azaaztv1.dto.request.SignUpRequest;
 import AZAAZTV1.azaaztv1.entitiy.DbEntity;
 import AZAAZTV1.azaaztv1.repository.DbRepository;
 import AZAAZTV1.azaaztv1.service.DbsService;
+import AZAAZTV1.azaaztv1.service.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,13 @@ public class DbServiceImpl implements DbsService {
                 .build();
 
         dbRepository.save(dbentity);
+    }
+
+    private final MemberMapper mapper;
+    @Override
+    public LoginRequest login(LoginRequest loginRequest) {
+        LoginRequest login = mapper.userLogin(loginRequest);
+        return login;
     }
 
 }

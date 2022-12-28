@@ -1,5 +1,6 @@
 package AZAAZTV1.azaaztv1.service;
 
+import AZAAZTV1.azaaztv1.dto.request.LoginRequest;
 import AZAAZTV1.azaaztv1.dto.request.SignUpRequest;
 
 public interface DbsService {
@@ -8,4 +9,6 @@ public interface DbsService {
    // Dto getInfo() //조회 (찾을 수 있는 기능!) 그럼 사실 필요없ㅇ..
 
     void signUp(SignUpRequest signUpRequest);
+
+    LoginRequest login(LoginRequest loginRequest);
 }
