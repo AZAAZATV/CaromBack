@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/signup")
+@RequestMapping(value="/signup", method = RequestMethod.POST)
 public class DbCon {
     private final DbRepository dbRepository;
 
