@@ -25,18 +25,15 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody @Valid LoginRequest loginRequest, HttpSession session) {
-        LoginRequest loginCheck = dbService.login(loginRequest);
-
-        if (loginCheck != null) {
-            session.setAttribute("LoginVo", loginCheck);
+    public String login(@RequestBody @Valid LoginRequest loginRequest) {
+        if(dbService.login(loginRequest)) {
+            return "redirect:/";
         }
-
-        return "redirect:/login";
+        return "login";
     }
 
 
-    
+
 }
 
 

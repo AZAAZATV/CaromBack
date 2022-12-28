@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class LoginRequest {
     private String id;
-    private int password;
+    private Integer password;
 
     public LoginRequest(DbEntity dbentity) {
         this.id = dbentity.getId();

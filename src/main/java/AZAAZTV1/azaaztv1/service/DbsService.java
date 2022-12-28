@@ -10,5 +10,5 @@ public interface DbsService {
 
     void signUp(SignUpRequest signUpRequest);
 
-    LoginRequest login(LoginRequest loginRequest);
+    boolean login(LoginRequest loginRequest);
 }

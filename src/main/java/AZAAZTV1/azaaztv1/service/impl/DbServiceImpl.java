@@ -5,7 +5,6 @@ import AZAAZTV1.azaaztv1.dto.request.SignUpRequest;
 import AZAAZTV1.azaaztv1.entitiy.DbEntity;
 import AZAAZTV1.azaaztv1.repository.DbRepository;
 import AZAAZTV1.azaaztv1.service.DbsService;
-import AZAAZTV1.azaaztv1.service.MemberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,11 +31,18 @@ public class DbServiceImpl implements DbsService {
         dbRepository.save(dbentity);
     }
 
-    private final MemberMapper mapper;
     @Override
-    public LoginRequest login(LoginRequest loginRequest) {
-        LoginRequest login = mapper.userLogin(loginRequest);
-        return login;
-    }
+    public boolean login(LoginRequest loginRequest) {
+        DbEntity findUser = dbRepository.findById(loginRequest.getId()).orElseThrow(() -> new RuntimeException());
 
+        if(findUser == null){
+            return false;
+        }
+
+        if(findUser.getPassword() != loginRequest.getPassword()) {
+            return false;
+        }
+
+        return true;
+    }
 }
