@@ -12,19 +12,19 @@ import lombok.*;
 @Getter
 @Entity
 @Table(name = "signup")
-public class Dbentity {
+public class DbEntity {
     @Id
     @Column(name ="ID",nullable = false, unique = true) //db 컬럼명 적을 것
-    private String ID;
+    private String id;
 
     @Column(name ="PASSWORD", nullable = false)
-    private int PASSWORD;
+    private int password;
 
     @Column(name ="NAME",nullable = false)
-    private String NAME;
+    private String name;
 
     @Column(name ="CLASS",nullable = false)
-    private String CLASS;
+    private String classNum;
 
 
 

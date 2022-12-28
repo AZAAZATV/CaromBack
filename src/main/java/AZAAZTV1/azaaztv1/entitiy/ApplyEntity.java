@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @Table(name="apply")
-public class Applyentity {
+public class ApplyEntity {
 
     @Id
     @Column(name ="NAME",nullable = false, unique = true)
-    private String NAME;
+    private String name;
 
     @Column(name ="CLASS",nullable = false)
-    private String CLASS;
+    private String classNum;
 
 }
