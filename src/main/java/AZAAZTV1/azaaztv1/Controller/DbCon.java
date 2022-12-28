@@ -10,7 +10,9 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,8 +20,9 @@ import org.springframework.web.bind.annotation.*;
 public class DbCon {
     private final DbRepository dbRepository;
 
+//http://10.82.18.67:1004/signup/insert?ID=asbcd&PASSWORD=1004&NAME=geher&CLASS=1-3-5
 
-     @GetMapping("/insert") //insert
+   /*  @GetMapping("/insert") //insert
     public String insertMember(@RequestParam(value="ID") String ID, @RequestParam(value = "PASSWORD") int PASSWORD, @RequestParam(value = "NAME") String NAME, @RequestParam(value = "CLASS") String CLASS) {
         if(dbRepository.findById(ID).isPresent()) {
             return "동일한 아이디가 이미 있습니다";
@@ -29,17 +32,16 @@ public class DbCon {
             dbRepository.save(entity);
             return "아이디 : " + ID + " 비밀번호 : " + PASSWORD + " 본인 이름 : "+NAME+" 학번  : "+CLASS+" 으로 가입되었습니다";
         }
-    }
-
-/*    @Autowired
-    private Dbservice dbService;
-    @PostMapping("login")
-    public String loginMember(@ModelAttribute Dbentity dbentity, HttpSession session){
-         Dbentity loginUser = Sqlses
     }*/
 
-/*    @PostMapping("/insert")
-    public void signUp(@RequestBody Dto dto){
+//http://10.82.18.67:1004/signup/insert
+//    @PostMapping(value = "/insert")
+//    public String insertMember(@RequestBody Dto dto){
+//        return dto.toString();
+//    }
+
+    @PostMapping("/insert")
+    public ResponseEntity<Dto> signUp(@RequestBody Dto dto){
 
         Dbentity dbentity = Dbentity.builder()
                 .ID(dto.getID())
@@ -49,14 +51,8 @@ public class DbCon {
                 .build();
 
         dbRepository.save(dbentity);
-    }*/
-
-
-    @GetMapping("/search") //selecte*from azaaztv
-    public String searchAllMember() {
-        return dbRepository.findAll().toString();
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
-
 
 
 

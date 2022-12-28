@@ -20,4 +20,15 @@ public class Dto {
     this.CLASS= dbentity.getCLASS();
     }
 
+    @Override
+    public String toString(){
+        return "Dto{"+
+                "ID='"+ID+'\''+
+                ", PASSWORD='"+PASSWORD+'\''+
+                ", NAME='"+NAME+'\''+
+                ", CLASS='"+CLASS+'\''+
+                '}';
+
+    }
+
 }
