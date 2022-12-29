@@ -8,6 +8,8 @@ import AZAAZTV1.azaaztv1.service.DbsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class DbServiceImpl implements DbsService {
@@ -33,14 +35,15 @@ public class DbServiceImpl implements DbsService {
 
     @Override
     public boolean login(LoginRequest loginRequest) {
-        DbEntity findUser = dbRepository.findById(loginRequest.getId()).orElseThrow(() -> new RuntimeException());
+        DbEntity findUser = dbRepository.findById(loginRequest.getId()).orElse(null);
+                //.orElseThrow(() -> new RuntimeException("오류!!!"));
 
         if(findUser == null){
-            return false;
+            throw new RuntimeException("유저가 없어");
         }
 
-        if(findUser.getPassword() != loginRequest.getPassword()) {
-            return false;
+        if(!findUser.getPassword().equals(loginRequest.getPassword())) {
+            throw new RuntimeException("비밀번호가 틀렸어");
         }
 
         return true;

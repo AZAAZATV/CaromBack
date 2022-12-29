@@ -18,7 +18,7 @@ public class DbEntity {
     private String id;
 
     @Column(name ="PASSWORD", nullable = false)
-    private int password;
+    private Integer password;
 
     @Column(name ="NAME",nullable = false)
     private String name;
