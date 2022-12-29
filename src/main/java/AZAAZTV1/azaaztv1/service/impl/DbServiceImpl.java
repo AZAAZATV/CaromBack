@@ -39,11 +39,13 @@ public class DbServiceImpl implements DbsService {
                 //.orElseThrow(() -> new RuntimeException("오류!!!"));
 
         if(findUser == null){
-            throw new RuntimeException("유저가 없어");
+            return false;
+            //throw new RuntimeException("유저가 없어");
         }
 
         if(!findUser.getPassword().equals(loginRequest.getPassword())) {
-            throw new RuntimeException("비밀번호가 틀렸어");
+            return false;
+            //throw new RuntimeException("비밀번호가 틀렸어");
         }
 
         return true;
