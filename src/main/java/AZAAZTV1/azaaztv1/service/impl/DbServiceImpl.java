@@ -50,4 +50,12 @@ public class DbServiceImpl implements DbsService {
 
         return true;
     }
+
+    @Override
+    public String userReturn(LoginRequest loginRequest) {
+        DbEntity user = dbRepository.findById(loginRequest.getId()).orElse(null);
+        String name = user.getName();
+        String classNum = user.getClassNum();
+        return "{\"name\" : \"" + name + "\", \"class\" : \"" + classNum + "\"}";
+    }
 }

@@ -27,8 +27,8 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@RequestBody @Valid LoginRequest loginRequest) {
         if(dbService.login(loginRequest)) {
-            //return "redirect:/home";
-            return "OK";
+            String json = dbService.userReturn(loginRequest);
+            return json;
         }
         return "login";
     }

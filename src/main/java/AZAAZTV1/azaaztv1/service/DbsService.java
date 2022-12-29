@@ -9,6 +9,6 @@ public interface DbsService {
    // Dto getInfo() //조회 (찾을 수 있는 기능!) 그럼 사실 필요없ㅇ..
 
     void signUp(SignUpRequest signUpRequest);
-
     boolean login(LoginRequest loginRequest);
+    String userReturn(LoginRequest loginRequest);
 }
