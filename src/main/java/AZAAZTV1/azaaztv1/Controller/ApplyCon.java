@@ -2,11 +2,18 @@ package AZAAZTV1.azaaztv1.Controller;
 
 import AZAAZTV1.azaaztv1.dto.ApplyDto;
 import AZAAZTV1.azaaztv1.entitiy.Applyentity;
+import AZAAZTV1.azaaztv1.entitiy.Applyentity2;
 import AZAAZTV1.azaaztv1.repository.ApplyRepository;
+import AZAAZTV1.azaaztv1.repository.ApplyRepository2;
+import AZAAZTV1.azaaztv1.service.ApplyService;
+import AZAAZTV1.azaaztv1.service.ApplyService2;
+import AZAAZTV1.azaaztv1.service.impl.ApplyServiceimpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -14,6 +21,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/apply")
 public class ApplyCon {
     private final ApplyRepository applyRepository;
+    private final ApplyService applyService;
+    private final ApplyRepository2 applyRepository2;
+    private final ApplyService2 applyService2;
 
     @PostMapping("/applyinfo1")
     public ResponseEntity<ApplyDto> regsiter(@RequestBody ApplyDto applyDto){
@@ -28,9 +38,35 @@ public class ApplyCon {
     }
 
     @GetMapping("/applyinfoout1")
-    public String applyoutput1(@RequestParam(value="NAME") String NAME,@RequestParam(value="CLASS") String CLASS){
-        return NAME+CLASS;
+    public ResponseEntity<Applyentity> applyoutput1(@RequestParam(value="NAME") String NAME){
+        return new ResponseEntity<>(applyService.getApply(NAME), HttpStatus.OK);
+    }
 
+    @GetMapping("/applyinfolist")
+    public ResponseEntity<List<Applyentity>> applyoutputlist1(){
+        return new ResponseEntity<>(applyRepository.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping("/applyinfo2")
+    public ResponseEntity<ApplyDto> regsiter2(@RequestBody ApplyDto applyDto){
+
+        Applyentity2 applyentity = Applyentity2.builder()
+                .CLASS(applyDto.getCLASS())
+                .NAME(applyDto.getNAME())
+                .build();
+
+        applyRepository2.save(applyentity);
+        return new ResponseEntity<>(applyDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/applyinfoout2")
+    public ResponseEntity<Applyentity2> applyoutput2(@RequestParam(value="NAME") String NAME){
+        return new ResponseEntity<>(applyService2.getApply(NAME), HttpStatus.OK);
+    }
+
+    @GetMapping("/applyinfolist2")
+    public ResponseEntity<List<Applyentity2>> applyoutputlist2(){
+        return new ResponseEntity<>(applyRepository2.findAll(), HttpStatus.OK);
     }
 
 }
