@@ -3,43 +3,22 @@ package AZAAZTV1.azaaztv1.Controller;
 import AZAAZTV1.azaaztv1.dto.Dto;
 import AZAAZTV1.azaaztv1.entitiy.Dbentity;
 import AZAAZTV1.azaaztv1.repository.DbRepository;
-import AZAAZTV1.azaaztv1.service.Dbservice;
-import AZAAZTV1.azaaztv1.service.impl.DbServiceImpl;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.servlet.http.HttpSession;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+
+@CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/signup")
 public class DbCon {
     private final DbRepository dbRepository;
 
-
-     @GetMapping("/insert") //insert
-    public String insertMember(@RequestParam(value="ID") String ID, @RequestParam(value = "PASSWORD") int PASSWORD, @RequestParam(value = "NAME") String NAME, @RequestParam(value = "CLASS") String CLASS) {
-        if(dbRepository.findById(ID).isPresent()) {
-            return "동일한 아이디가 이미 있습니다";
-        }
-         else {
-            Dbentity entity = Dbentity.builder().ID(ID).PASSWORD(PASSWORD).NAME(NAME).CLASS(CLASS).build();
-            dbRepository.save(entity);
-            return "아이디 : " + ID + " 비밀번호 : " + PASSWORD + " 본인 이름 : "+NAME+" 학번  : "+CLASS+" 으로 가입되었습니다";
-        }
-    }
-
-/*    @Autowired
-    private Dbservice dbService;
-    @PostMapping("login")
-    public String loginMember(@ModelAttribute Dbentity dbentity, HttpSession session){
-         Dbentity loginUser = Sqlses
-    }*/
-
-/*    @PostMapping("/insert")
-    public void signUp(@RequestBody Dto dto){
+    @PostMapping("/insert")
+    public ResponseEntity<Dto> signUp(@RequestBody Dto dto){
 
         Dbentity dbentity = Dbentity.builder()
                 .ID(dto.getID())
@@ -49,15 +28,27 @@ public class DbCon {
                 .build();
 
         dbRepository.save(dbentity);
-    }*/
-
-
-    @GetMapping("/search") //selecte*from azaaztv
-    public String searchAllMember() {
-        return dbRepository.findAll().toString();
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
+//http://10.82.18.67:1004/signup/insert?ID=asbcd&PASSWORD=1004&NAME=geher&CLASS=1-3-5
 
+    /* @GetMapping("/insert") //insert
+    public String insertMember(@RequestParam(value="ID") String ID, @RequestParam(value = "PASSWORD") int PASSWORD, @RequestParam(value = "NAME") String NAME, @RequestParam(value = "CLASS") String CLASS) {
+        if(dbRepository.findById(ID).isPresent()) {
+            return "동일한 아이디가 이미 있습니다";
+        }
+         else {
+            Dbentity entity = Dbentity.builder().ID(ID).PASSWORD(PASSWORD).NAME(NAME).CLASS(CLASS).build();
+            dbRepository.save(entity);
+           *//* return  new ResponseEntity<>(dto, HttpStatus.OK);*//* //"아이디 : " + ID + " 비밀번호 : " + PASSWORD + " 본인 이름 : "+NAME+" 학번  : "+CLASS+" 으로 가입되었습니다";
+        }
+    }*/
 
+//http://10.82.18.67:1004/signup/insert
+//    @PostMapping(value = "/insert")
+//    public String insertMember(@RequestBody Dto dto){
+//        return dto.toString();
+//    }
 
 }

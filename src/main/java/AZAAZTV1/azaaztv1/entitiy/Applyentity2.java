@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //생성자 자동완성 안되잖앗ㅂ
 @Getter
 @Entity
-@Table(name="\"apply\"")
-public class Applyentity {
+@Table(name="\"apply2\"")
+public class Applyentity2 {
 
     @Id
     @Column(name ="NAME",nullable = false, unique = true)
@@ -25,5 +25,3 @@ public class Applyentity {
     private String CLASS;
 
 }
-
-
