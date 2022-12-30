@@ -4,15 +4,13 @@ import AZAAZTV1.azaaztv1.dto.request.LoginRequest;
 import AZAAZTV1.azaaztv1.dto.request.SignUpRequest;
 import AZAAZTV1.azaaztv1.entitiy.DbEntity;
 import AZAAZTV1.azaaztv1.repository.DbRepository;
-import AZAAZTV1.azaaztv1.service.DbsService;
+import AZAAZTV1.azaaztv1.service.DbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
-public class DbServiceImpl implements DbsService {
+public class DbServiceImpl implements DbService {
     private final DbRepository dbRepository;
 
     @Override

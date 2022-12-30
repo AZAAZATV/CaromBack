@@ -14,9 +14,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //생성자 자동완성 안되잖앗ㅂ
 @Getter
 @Entity
-@Table(name="apply")
-public class ApplyEntity {
-
+@Table(name="apply2")
+public class ApplyEntity2 {
     @Id
     @Column(name ="NAME",nullable = false, unique = true)
     private String NAME;

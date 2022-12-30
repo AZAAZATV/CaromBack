@@ -26,6 +26,4 @@ public class DbEntity {
     @Column(name ="CLASS",nullable = false)
     private String classNum;
 
-
-
 }

@@ -28,6 +28,7 @@ public class MemberController {
     public String login(@RequestBody @Valid LoginRequest loginRequest) {
         if(dbService.login(loginRequest)) {
             String json = dbService.userReturn(loginRequest);
+            System.out.println(json);
             return json;
         }
         return "login";
