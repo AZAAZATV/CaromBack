@@ -1,6 +1,5 @@
 package AZAAZTV1.azaaztv1.repository;
 
-import AZAAZTV1.azaaztv1.entitiy.Applyentity;
 import AZAAZTV1.azaaztv1.entitiy.Applyentity2;
 import org.springframework.data.jpa.repository.JpaRepository;
 

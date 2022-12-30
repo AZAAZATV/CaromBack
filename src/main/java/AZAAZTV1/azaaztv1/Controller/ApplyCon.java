@@ -7,7 +7,6 @@ import AZAAZTV1.azaaztv1.repository.ApplyRepository;
 import AZAAZTV1.azaaztv1.repository.ApplyRepository2;
 import AZAAZTV1.azaaztv1.service.ApplyService;
 import AZAAZTV1.azaaztv1.service.ApplyService2;
-import AZAAZTV1.azaaztv1.service.impl.ApplyServiceimpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +24,7 @@ public class ApplyCon {
     private final ApplyRepository2 applyRepository2;
     private final ApplyService2 applyService2;
 
-    @PostMapping("/applyinfo1")
+    @PostMapping("/applyinfo1") //첫번째 신청하기 테이블
     public ResponseEntity<ApplyDto> regsiter(@RequestBody ApplyDto applyDto){
 
         Applyentity applyentity = Applyentity.builder()
@@ -47,7 +46,7 @@ public class ApplyCon {
         return new ResponseEntity<>(applyRepository.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/applyinfo2")
+    @PostMapping("/applyinfo2") //두번째 신청하기 테이블
     public ResponseEntity<ApplyDto> regsiter2(@RequestBody ApplyDto applyDto){
 
         Applyentity2 applyentity = Applyentity2.builder()
@@ -60,7 +59,7 @@ public class ApplyCon {
     }
 
     @GetMapping("/applyinfoout2")
-    public ResponseEntity<Applyentity2> applyoutput2(@RequestParam(value="NAME") String NAME){
+    public ResponseEntity<Applyentity2> ouapplytput2(@RequestParam(value="NAME") String NAME){
         return new ResponseEntity<>(applyService2.getApply(NAME), HttpStatus.OK);
     }
 
@@ -68,6 +67,12 @@ public class ApplyCon {
     public ResponseEntity<List<Applyentity2>> applyoutputlist2(){
         return new ResponseEntity<>(applyRepository2.findAll(), HttpStatus.OK);
     }
+//delete 기능
 
+/*    @DeleteMapping("/applydelete{NAME}")
+    public String delete(@PathVariable String NAME){
+        applyService.delete(NAME);
+        return "삭제됨1";
+    }*/
 }
 

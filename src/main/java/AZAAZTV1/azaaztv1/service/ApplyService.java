@@ -9,4 +9,6 @@ public interface ApplyService {
 
 
     Applyentity getApply(String NAME);
+
+    void delete(String Name);
 }

@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface ApplyRepository extends JpaRepository<Applyentity,String > {
 
     Optional<Applyentity> findByNAME(String NAME);
+
 }

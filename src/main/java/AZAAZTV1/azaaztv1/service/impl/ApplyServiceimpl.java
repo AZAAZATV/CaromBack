@@ -31,5 +31,10 @@ public class ApplyServiceimpl implements ApplyService {
         else return null;
     }
 
+    @Override
+    public void delete(String NAME) {
+
+    }
+
 
 }
