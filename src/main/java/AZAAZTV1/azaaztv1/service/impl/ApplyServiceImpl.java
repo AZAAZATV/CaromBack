@@ -31,6 +31,7 @@ public class ApplyServiceImpl implements ApplyService {
         ApplyEntity applyEntity = applyRepository.findById(applyResponse.getNAME()).orElse(null);
 
         if (applyEntity != null) {
+            System.out.println(applyEntity);
             applyRepository.delete(applyEntity);
             return true;
         }
